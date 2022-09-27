@@ -22,7 +22,7 @@ export default function Balance({saldo}){
     // e o ':' como fosse o 'else' 
 
 
-    const [showValue, setValue] = useState(false)
+    const [showValue, setValue] = useState(true)
     return(
         
         <View style={styles.container}>

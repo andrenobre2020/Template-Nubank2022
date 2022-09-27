@@ -12,7 +12,6 @@ export default function Horizontal({pix,pagar,transferir, onOpen}){
 
             <TouchableOpacity style={styles.botao} onPress={onOpen}> 
             <MaterialCommunityIcons style={styles.icone} name="bank-transfer" size={24} color="black" />
-           
             </TouchableOpacity>
            
             <Text style={styles.title}>{pix}</Text>
@@ -21,7 +20,6 @@ export default function Horizontal({pix,pagar,transferir, onOpen}){
             <View style={styles.pagar}>
             <TouchableOpacity style={styles.botao1}> 
             <MaterialCommunityIcons name="barcode" size={24} color="black" />
-            
             </TouchableOpacity>
            
             <Text style={styles.title1}>{pagar}</Text>

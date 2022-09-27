@@ -6,14 +6,17 @@ import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { Modalize } from 'react-native-modalize';
+import {useNavigation} from '@react-navigation/native';
 
-
+import { Feather } from '@expo/vector-icons';
 
 export default function Pix(){
     const onOpen = () => {
         modalizeRef.current?.open();
       };
-      const modalizeRef = useRef('null');
+      const modalizeRef = useRef('');
+
+      const navigation = useNavigation();
     return(
         <View style={styles.container}>
               
@@ -23,29 +26,44 @@ export default function Pix(){
            
             <View style={styles.pagar}>
 
-            <TouchableOpacity style={styles.botao1} onPress={onOpen} > 
+            <View style={{flexDirection:'row'}}>
 
-            <MaterialCommunityIcons name="bank-transfer-out" size={34} color="black"  />
-           
+            
+                <TouchableOpacity style={styles.botao1} onPress={() => {navigation.navigate('Transferencia')}}>
+                <FontAwesome name="money" size={24} color="black" />
+                </TouchableOpacity>
+                <Text style={{marginTop:80,marginStart:-70,fontWeight:'bold'}}>Transferir</Text>
+              
+
+         
+            <TouchableOpacity style={{marginStart:50,backgroundColor:'rgba(233,230,229, 0.5)',height: 70,
+        width: 70,borderRadius:60 /2}}>
+               <Feather name="copy" size={24} color="black"  style={{marginStart:24,marginTop:22}}/>
             </TouchableOpacity>
-           
-            <Text style={styles.title2}>Transferir</Text>
+            <Text style={{marginTop:80,marginStart:-90,fontWeight:'bold'}}>Pix Copia e Colar</Text>
 
-          
+            <TouchableOpacity style={{marginStart:50,backgroundColor:'rgba(233,230,229, 0.5)',height: 70,
+        width: 70,borderRadius:60 /2}}>
+               <AntDesign name="qrcode" size={26} color="black" style={{marginStart:24,marginTop:22}} />
+            </TouchableOpacity>
+            <Text style={{marginTop:80,marginStart:-70,fontWeight:'bold'}}>Ler QR code</Text>
+      
+      
+           
             </View>
             
-                <View style={styles.colar}>
-                    <TouchableOpacity  style={styles.pixColar}>
-                    <Ionicons name="copy-outline" size={34} color="black" />
-                    </TouchableOpacity>
-                    <Text style={styles.titlePix}>Pix Copia e Cola</Text>
+
+
+            <Modalize ref={modalizeRef} snapPoint={600}>
+                <View>
+                    <Text>Achando o pix </Text>
                 </View>
-              <View style={styles.qrCode}>
-                <TouchableOpacity style={styles.botao1}>
-                <AntDesign name="qrcode" size={34} color="black" />
-                </TouchableOpacity>
-                <Text style={styles.titleQr}>Ler QR code</Text>
-              </View>
+             </Modalize>
+
+            </View>
+            
+            
+         
 
               <Text style={styles.receive}>Receber</Text>
 
@@ -63,11 +81,7 @@ export default function Pix(){
                 <Text style={styles.titleCobrar}>Depositar </Text>
               </View>
 
-              <Modalize ref={modalizeRef} snapPoint={600}>
-                <View>
-                    <Text>Achando o pix </Text>
-                </View>
-             </Modalize>
+           
         </View>
 
         

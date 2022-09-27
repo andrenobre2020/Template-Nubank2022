@@ -21,7 +21,7 @@ const list = [
   {
     id: 2,
     label: 'Pix Cliente',
-    value: '1200.20',
+    value: '12.00.20',
     date: '20/06/2022',
     type: 1
 
@@ -90,6 +90,14 @@ const list = [
     type: 1
 
   },
+  {
+    id: 11,
+    label: 'PIX Cliente',
+    value: '220.10',
+    date: '19/08/2022',
+    type: 1
+
+  },
 ]
 
 export default function Home() {
@@ -112,7 +120,7 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Header name='Olá, André Nobre'/>
-      <Balance saldo='24.513.12'/>
+      <Balance saldo='100.513.12'/>
       
       <Horizontal pix='Àrea Pix' pagar='Pagar' transferir='Transferir' onOpen={onOpen}  />
 
