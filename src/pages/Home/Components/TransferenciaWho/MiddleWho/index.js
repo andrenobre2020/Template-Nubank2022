@@ -2,13 +2,15 @@ import React,{useState,useEffect} from "react";
 import { View,Text,StyleSheet,TextInput,ScrollView,TouchableOpacity} from "react-native";
 import TopoWho from "../header";
 import { FontAwesome5 } from '@expo/vector-icons';
-
+import {useNavigation} from '@react-navigation/native';
 export default function MiddleWho({route}){
+    const navigation = useNavigation();
     const[pix,Setpix]=useState('')
     const[cpf,Setcpf] = useState(true)
     const[celular,Setcelular] = useState(true)
     const[cnpj,Setcnpj] = useState(true)
     const[email,Setemail] = useState(true)
+
 
     useEffect(()=> {
         if(pix.length == 13){
@@ -26,6 +28,20 @@ export default function MiddleWho({route}){
             Setcnpj(true)
         }
     },[pix])
+
+
+
+    function Celular(){
+        navigation.navigate("DoneMiddle",{Valor:route.params.Valor,Pix:pix})
+    }
+
+    function Cpf(){
+        navigation.navigate("DoneMiddle",{Valor:route.params.Valor,Pix:pix})
+    }
+
+    function Cnpj(){
+        navigation.navigate("DoneMiddle",{Valor:route.params.Valor,Pix:pix})
+    }
 
     return(
         <><TopoWho />
@@ -50,7 +66,7 @@ export default function MiddleWho({route}){
            <Text></Text>
            ):(
             <View style={{alignItems:'center',marginStart:20}} >
-              <TouchableOpacity style={{backgroundColor:'#820ad1',borderRadius:24,width:350,padding:16}}>
+              <TouchableOpacity onPress={Cpf} style={{backgroundColor:'#820ad1',borderRadius:24,width:350,padding:16}}>
                 <Text style={{color:'#fff',fontWeight:'bold',textAlign:'center',fontSize:16}}>Transferir para este CPF</Text>
               </TouchableOpacity>
             </View>
@@ -62,7 +78,7 @@ export default function MiddleWho({route}){
            <Text></Text>
            ):(
             <View style={{alignItems:'center',marginStart:20}} >
-              <TouchableOpacity style={{backgroundColor:'#820ad1',borderRadius:24,width:350,padding:16}}>
+              <TouchableOpacity onPress={Cnpj} style={{backgroundColor:'#820ad1',borderRadius:24,width:350,padding:16}}>
                 <Text style={{color:'#fff',fontWeight:'bold',textAlign:'center',fontSize:16}}>Transferir para este CNPJ</Text>
               </TouchableOpacity>
             </View>
@@ -84,7 +100,7 @@ export default function MiddleWho({route}){
            <Text></Text>
            ):(
             <View style={{alignItems:'center',marginStart:20}} >
-              <TouchableOpacity style={{backgroundColor:'#820ad1',borderRadius:24,width:350,padding:16}}>
+              <TouchableOpacity onPress={Celular} style={{backgroundColor:'#820ad1',borderRadius:24,width:350,padding:16}}>
                 <Text style={{color:'#fff',fontWeight:'bold',textAlign:'center',fontSize:16}}>Transferir para este celular</Text>
               </TouchableOpacity>
             </View>
